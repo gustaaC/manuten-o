@@ -1,0 +1,35 @@
+<!-- base.html -->
+<!doctype html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
+
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de dispositivos
+{% endblock %}
+
+{% block content %}
+    <h1>Dispositivos</h1>
+    <ul>
+        {% for device in devices %}
+            <li>
+                <a href="{{ url_for('device_detail', device_id=device.id) }}">
+                    {{ device.imei }} - {{ device.status }}
+                </a>
+            </li>
+        {% else %}
+            <li>Nenhum dispositivo cadastrado.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('new_device') }}">Adicionar dispositivo</a>
+{% endblock %}

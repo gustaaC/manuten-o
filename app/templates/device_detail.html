@@ -1,0 +1,29 @@
+<form action="{{ url_for('update_status', device_id=device.id) }}" method="POST">
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <select name="status" id="status" class="form-control">
+            <option value="retest" {% if device.status == 'retest' %}selected{% endif %}>Retest</option>
+            <option value="completed" {% if device.status == 'completed' %}selected{% endif %}>Completed</option>
+            <option value="warranty" {% if device.status == 'warranty' %}selected{% endif %}>Warranty</option>
+            <option value="chip_swap" {% if device.status == 'chip_swap' %}selected{% endif %}>Chip Swap</option>
+            <option value="discarded" {% if device.status == 'discarded' %}selected{% endif %}>Discarded</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-info">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+
+
+
+
+

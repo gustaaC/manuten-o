@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Novo Aparelho</h2>
+  <form method="post">
+    <label for="model">Modelo:</label>
+    <input type="text" id="model" name="model" required>
+    <br>
+    <label for="imei">IMEI:</label>
+    <input type="text" id="imei" name="imei" required>
+    <br>
+    <label for="status">Status:</label>
+    <select id="status" name="status">
+      <option value="Em estoque">Em estoque</option>
+      <option value="Em reteste">Em reteste</option>
+      <option value="Concluído">Concluído</option>
+      <option value="Garantia">Garantia</option>
+      <option value="Troca de chip">Troca de chip</option>
+    </select>
+    <br>
+    <label for="observation">Observação:</label>
+    <textarea id="observation" name="observation"></textarea>
+    <br>
+    <input type="submit" value="Salvar">
+  </form>
+{% endblock %}
